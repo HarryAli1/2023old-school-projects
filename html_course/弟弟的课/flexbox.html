@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container {
+            flex-direction: row;
+            border: 5px red solid;
+            display: flex;
+            /* 将元素设为 Flex 容器 */
+            flex-flow: row wrap;
+            /* 设置主轴排列方式（横向）和换行设置 */
+            justify-content: space-between;
+            /* 设置主轴上的对齐方式 */
+        }
+        .flex-item {
+            border: 1px red solid;
+            flex: 0 1 300px;
+            /* 控制项目的尺寸及占比 */
+            /* 控制元素间距 */
+            height: 20vh;
+            margin: 30px 40px 10px;
+        }
+        /**第二个flex-container-old-notebook*/
+        .flex-container-old-notebook{
+            display: inline-flexbox;
+            flex-direction: row;
+            flex-flow: row wrap;
+            justify-content:flex-start;
+            justify-content: center;
+        }
+        .notebook-line{
+            height: 5vh;
+            background-color: #779693;
+            margin: 1vh;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">随便画画</h1>
+    <div class="flex-container" contenteditable="">
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+    </div>
+    <br>
+    <hr>
+    <h1 style="text-align: center;">小时候的本子</h1>
+    <div class="flex-container-old-notebook" contenteditable="">
+        <p><input class="flex-item1" type="text"></p>
+        <p><input class="flex-item1" type="text"></p>
+        <p><input class="flex-item1" type="text"></p>
+        <p><input class="flex-item1" type="text"></p>
+        <p><input class="flex-item1" type="text"></p>
+        <p><input class="flex-item1" type="text"></p>
+        <p><input class="flex-item1" type="text"></p>
+        <p><input class="flex-item1" type="text"></p>
+        <p><input class="flex-item1" type="text"></p>
+        <p><input class="flex-item1" type="text"></p>
+        <p><input class="flex-item1" type="text"></p>
+        <p><input class="flex-item1" type="text"></p>
+        <p><input class="flex-item1" type="text"></p>
+        <p><input class="flex-item1" type="text"></p>
+    </div>
+    <br>
+    <hr>
+    <script>
+        const inputs= document.querySelectorAll('.flex-item1');
+        const colors = ["red", "orange", "yellow", "green", "blue", "purple", "grey", "black", "white", "pink", "brown", "teal", "navy", "maroon"];
+        console.log(inputs);
+        console.log(inputs.length);    
+        for(let i=0;i < inputs.length;i++){
+            inputs[i].addEventListener('input',function(){
+            // console.log(inputs[i].getAttribute('control-id'));
+            let controlID= inputs[i].getAttribute('control-id');         
+            const numbers = controlID.replace(/[^0-9]/g, "");
+            // console.log(numbers);           
+            inputs[i].style.backgroundColor=colors[i];
+        })
+        }
+    </script>
+</body>
+</html>
