@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main" style="height: 500px;width: 900px;border: 1px red solid;"></div>
+
+    <script>
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+        option = {
+            title: {
+                text: '你认为疫情在校期间最主要的出行方式是哪些？',
+                subtext: '数据来源:问卷调查----这次写了人数',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                top: '8%',
+                left: 'center',
+                // doesn't perfectly work with our tricks, disable it
+                selectedMode: false
+            },
+            series: [
+                {
+                    name: '出行方式',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    center: ['50%', '70%'],
+                    // adjust the start angle
+                    startAngle: 180,
+                    label: {
+                        show: true,
+                        formatter(param) {
+                            // correct the percentage
+                            return param.name + ' (' + param.percent * 2 + '%)';
+                        }
+                    },
+                    data: [
+                        { value: 13, name: '公交车' },
+                        { value: 23, name: '出租车' },
+                        { value: 37, name: '自行车' },
+                        { value: 53, name: '步行' },
+                        { value: 23, name: '高铁,地铁,火车' },
+                        {
+                            // make an record to fill the bottom 50%
+                            value: 13 + 23 + 37 + 53 + 23,
+                            itemStyle: {
+                                // stop the chart from rendering this piece
+                                color: 'none',
+                                decal: {
+                                    symbol: 'none'
+                                }
+                            },
+                            label: {
+                                show: false
+                            }
+                        }
+                    ]
+                }
+            ]
+        };
+        myChart.setOption(option);
+
+    </script>
+</body>
+
+</html>

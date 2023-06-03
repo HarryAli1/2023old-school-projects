@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main" style="height: 500px;width: 900px;border: 1px red solid;"></div>
+
+    <script>
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom, 'dark');
+        var option;
+        option = {
+            title: {
+                text: '对学校提供在线学习服务的满意度',
+                subtext: '数据来源:问卷调查',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            series: [
+                {
+                    name: '满意度',
+                    type: 'pie',
+                    radius: '50%',
+                    data: [
+                        { value: 155, name: '非常满意' },
+                        { value: 147, name: '比较满意' },
+                        { value: 1, name: '一般' },
+                        { value: 104, name: '比较不满意' },
+                        { value: 1, name: '非常不满意' }
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        myChart.setOption(option);
+
+    </script>
+</body>
+
+</html>

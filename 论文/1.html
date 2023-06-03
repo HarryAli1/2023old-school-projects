@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main" style="width: 500px;height:500px;"></div>
+
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+        const option = {
+            title: {
+                text: '你认为疫情在校期间最主要的出行方式是哪些？',
+                left: 60,
+                textStyle: {
+                    color: 'blue'
+                }
+            },
+            tooltip: {
+                // trigger: 'item'
+                show: true,
+            },
+            legend: {
+                top: '5%',
+                left: 'center',
+                data: []
+            },
+            series: [
+                {
+                    name: '出行方式',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    avoidLabelOverlap: false,
+                    itemStyle: {
+                        borderRadius: 10,
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    },
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: 40,
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        { value: 9, name: '公交车' },
+                        { value: 15, name: '出租车' },
+                        { value: 25, name: '自行车' },
+                        { value: 36, name: '步行' },
+                        { value: 15, name: '高铁,地铁,火车' }
+                    ]
+                }
+            ]
+        };
+
+
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>

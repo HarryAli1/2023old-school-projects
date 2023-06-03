@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main" style="height: 500px;width: 900px;border: 1px red solid;"></div>
+
+    <script>
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            title: {
+                text: '疫情期间你回家的交通方式',
+                subtext: '数据来源:问卷调查，写了百分比',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            series: [
+                {
+                    name: '交通方式',
+                    type: 'pie',
+                    radius: '50%',
+                    data: [
+                        { value: 36, name: '火车' },
+                        { value: 30, name: '高铁' },
+                        { value: 8, name: '地铁' },
+                        { value: 7, name: '公交车' },
+                        { value: 15, name: '私家车' },
+                        { value: 4, name: '其他' }
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+
+        myChart.setOption(option);
+
+    </script>
+</body>
+
+</html>

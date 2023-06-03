@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main" style="height: 500px;width: 900px;border: 1px red solid;"></div>
+
+    <script>
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+        option = {
+            title: {
+                text: '在新冠疫情期间,是否有尝试过以下出行方式?',
+                subtext: '数据来源:问卷调查',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            series: [
+                {
+                    name: '出行方式',
+                    type: 'pie',
+                    radius: '50%',
+                    data: [
+                        { value: 157, name: '共享单车' },
+                        { value: 147, name: '出租车' },
+                        { value: 106, name: '网约车' },
+                        { value: 0, name: '其他' }
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        myChart.setOption(option);
+
+    </script>
+</body>
+
+</html>
